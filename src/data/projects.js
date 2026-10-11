@@ -54,7 +54,7 @@ export const projects = [
     id: 'smartvagas',
     title: 'Smart Vagas',
     featured: false,
-    category: 'Aplicação web · Projeto pessoal',
+    category: 'Aplicação web · Projeto acadêmico',
     year: '2026',
     summary:
       'Sistema de gestão para estacionamentos pequenos: entrada e saída pela placa, mapa de vagas em tempo real, mensalistas, caixa por turno e lucro do mês. Inclui um portal onde o motorista reserva vaga com antecedência.',
@@ -68,7 +68,7 @@ export const projects = [
       'Aplicação funcional com três perfis (dono, operador e motorista) e permissões checadas no servidor, além de 119 testes automatizados nas regras de preço, mensalidade, reserva e caixa. Em um teste com 8 reservas simultâneas para 5 vagas, não houve nenhuma reserva duplicada. O pagamento da reserva ainda é confirmado manualmente no guichê; a integração com um gateway Pix fica para a próxima versão.',
     links: {
       repo: 'https://github.com/mateusnchaves/SmartVagas',
-      demo: 'https://github.com/mateusnchaves/SmartVagas',
+      demo: todo('Link da versão publicada'),
     },
     image: {
       src: './assets/projects/smartvagas_login.png',

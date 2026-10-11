@@ -1,12 +1,15 @@
 /* ——— Hero ——— */
 
 .hero {
+  position: relative;
   display: flex;
   padding-top: calc(var(--header-height) + clamp(1rem, 3.5vh, 3rem));
   padding-bottom: var(--space-5);
 }
 
 .hero__inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
 }
@@ -19,6 +22,26 @@
 .hero__status,
 .hero__location {
   grid-column: 1 / -1;
+}
+
+/* Retrato em retícula (interactions/portrait.js): atrás do texto, no canto superior direito. */
+.hero__portrait {
+  position: absolute;
+  top: calc(var(--header-height) + 1rem);
+  right: var(--margin);
+  z-index: 0;
+  width: 62vw;
+  aspect-ratio: 1;
+  pointer-events: none;
+  opacity: 0.35;
+  /* A camiseta não termina num corte reto: os pontos somem na base. */
+  mask-image: linear-gradient(#000 62%, transparent 96%);
+}
+
+.hero__portrait canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
 }
 
 .hero__title {
@@ -172,6 +195,24 @@
 
   .hero__intro {
     grid-column: 4 / span 6;
+  }
+}
+
+/* Desktop: o retrato aparece inteiro à direita, e a localização vai para a esquerda, ao lado do status. */
+@media (min-width: 64em) {
+  .hero__portrait {
+    top: var(--header-height);
+    width: min(28vw, 30rem);
+    opacity: 1;
+  }
+
+  .hero__status {
+    grid-column: 1 / span 5;
+  }
+
+  .hero__location {
+    grid-column: 6 / span 3;
+    justify-self: start;
   }
 }
 
@@ -842,6 +883,65 @@
 
 .contact .section-head__index {
   color: var(--color-on-cobalt);
+}
+
+/* Globo de pontos (interactions/contact-globe.js): atrás do título, à direita. */
+.contact {
+  position: relative;
+  overflow: hidden;
+}
+
+.contact__inner {
+  position: relative;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.contact__inner a,
+.contact__inner button {
+  pointer-events: auto;
+}
+
+.contact__globe {
+  position: absolute;
+  top: clamp(3rem, 6vw, 5rem);
+  right: calc(var(--margin) - 18vw);
+  z-index: 0;
+  width: 72vw;
+  opacity: 0;
+  transition: opacity 1600ms var(--ease-out);
+}
+
+.contact__globe.is-visible {
+  opacity: 0.55;
+}
+
+.contact__globe canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact__globe canvas {
+    cursor: grab;
+  }
+
+  .contact__globe.is-dragging canvas {
+    cursor: grabbing;
+  }
+}
+
+@media (min-width: 64em) {
+  .contact__globe {
+    top: clamp(4rem, 7vw, 7rem);
+    right: var(--margin);
+    width: min(40vw, 42rem);
+  }
+
+  .contact__globe.is-visible {
+    opacity: 1;
+  }
 }
 
 .contact__title {
