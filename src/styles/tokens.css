@@ -1,4 +1,6 @@
 :root {
+  color-scheme: light;
+
   /* Color */
   --color-paper: #f4f3ef;
   --color-surface: #eae8e2;
@@ -8,6 +10,8 @@
   --color-line: #d7d4cc;
   --color-cobalt: #1f3fd1;
   --color-cobalt-tint: rgb(31 63 209 / 0.06);
+  /* Fundo cobalto com texto claro (contato, rodapé, seleção). No claro é igual ao acento. */
+  --color-cobalt-fill: var(--color-cobalt);
   --color-on-cobalt: #f4f3ef;
   --color-on-cobalt-2: #c9d2f7;
 
@@ -63,4 +67,19 @@
   --duration-fast: 160ms;
   --duration-base: 320ms;
   --duration-slow: 800ms;
+}
+
+/* Modo escuro: só quando o visitante liga no botão do header. O tema claro é o padrão. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-paper: #121211;
+  --color-surface: #1c1b19;
+  --color-ink: #ecebe5;
+  --color-ink-2: #b9b7af;
+  --color-ink-3: #94928a;
+  --color-line: #2e2d2a;
+  --color-cobalt: #8095ff;
+  --color-cobalt-fill: #2a46d6;
+  --color-cobalt-tint: rgb(128 149 255 / 0.1);
 }

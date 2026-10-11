@@ -1,7 +1,22 @@
 import { projectImage, ui } from '../config.js';
 import { pad } from '../lib/format.js';
 import { html } from '../lib/html.js';
+import { isTodo } from '../lib/todo.js';
 import { externalLink, filled, icon, tagList } from './ui.js';
+
+const usable = (url) => (url && !isTodo(url) ? url : null);
+
+/**
+ * O print leva para a demo (ou, sem demo, para o repositório). Fica fora da
+ * ordem de tabulação: os mesmos links já existem na lista ao lado.
+ */
+function mediaLink(project, content) {
+  const { repo, demo } = project.links ?? {};
+  const href = usable(demo) ?? usable(repo);
+  if (!href) return content;
+  const label = usable(demo) ? ui.viewDemo : ui.viewCode;
+  return html`<a class="media__link" href="${href}" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-label="${label}: ${project.title} ${ui.newTab}" data-cursor-label="${label}">${content}</a>`;
+}
 
 function media(project, number) {
   const caption = html`<figcaption class="meta">${ui.figure} ${number} — ${project.title}</figcaption>`;
@@ -10,9 +25,10 @@ function media(project, number) {
     const { src, alt, width = projectImage.width, height = projectImage.height } = project.image;
     return html`
       <figure class="case__media media">
-        <div class="media__frame">
-          <img src="${src}" alt="${alt}" width="${width}" height="${height}" loading="lazy" decoding="async">
-        </div>
+        ${mediaLink(project, html`
+          <div class="media__frame">
+            <img src="${src}" alt="${alt}" width="${width}" height="${height}" loading="lazy" decoding="async">
+          </div>`)}
         ${caption}
       </figure>`;
   }

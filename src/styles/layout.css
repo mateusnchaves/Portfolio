@@ -78,6 +78,56 @@
   text-align: center;
 }
 
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
+  color: var(--color-ink);
+}
+
+/* Círculo meio preenchido: gira meia volta no hover e inverte no modo escuro. */
+.theme-toggle__mark {
+  width: 0.8125rem;
+  height: 0.8125rem;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.theme-toggle:hover .theme-toggle__mark,
+.theme-toggle[aria-pressed="true"] .theme-toggle__mark {
+  transform: rotate(180deg);
+}
+
+.theme-toggle[aria-pressed="true"]:hover .theme-toggle__mark {
+  transform: rotate(0deg);
+}
+
+/* No celular o botão fica dentro do menu, para o header não apertar. */
+.theme-toggle--menu {
+  display: inline-flex;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: var(--text-meta);
+  letter-spacing: var(--tracking-meta);
+  text-transform: uppercase;
+}
+
+@media (max-width: 59.99em) {
+  .site-header__inner > .theme-toggle {
+    display: none;
+  }
+}
+
+@media (min-width: 60em) {
+  .theme-toggle--menu {
+    display: none;
+  }
+}
+
 .menu-toggle {
   min-width: 3.5rem;
   min-height: 2.75rem;
@@ -163,8 +213,15 @@
   }
 
   .site-nav {
-    grid-column: 4 / -1;
+    grid-column: 4 / span 8;
     align-self: stretch;
+  }
+
+  .theme-toggle {
+    grid-row: 1;
+    grid-column: 12;
+    justify-self: end;
+    margin-right: calc(var(--space-3) * -1);
   }
 
   .site-nav__list {
@@ -276,14 +333,14 @@
 /* Footer */
 
 .site-footer {
-  background-color: var(--color-cobalt);
+  background-color: var(--color-cobalt-fill);
   color: var(--color-on-cobalt);
 }
 
 .site-footer__inner {
   row-gap: var(--space-3);
   padding-block: var(--space-5);
-  border-top: 1px solid rgb(244 243 239 / 0.28);
+  border-top: 1px solid color-mix(in srgb, var(--color-on-cobalt) 28%, transparent);
 }
 
 .site-footer .meta {
@@ -321,7 +378,7 @@
 
 .site-footer kbd {
   padding: 0 0.35em;
-  border: 1px solid rgb(244 243 239 / 0.5);
+  border: 1px solid color-mix(in srgb, var(--color-on-cobalt) 50%, transparent);
   font-family: inherit;
 }
 
@@ -383,8 +440,87 @@
 }
 
 .grid-overlay span {
-  background-color: rgb(31 63 209 / 0.07);
+  background-color: color-mix(in srgb, var(--color-cobalt) 7%, transparent);
   box-shadow:
-    inset 1px 0 rgb(31 63 209 / 0.22),
-    inset -1px 0 rgb(31 63 209 / 0.22);
+    inset 1px 0 color-mix(in srgb, var(--color-cobalt) 22%, transparent),
+    inset -1px 0 color-mix(in srgb, var(--color-cobalt) 22%, transparent);
+}
+
+/* Tela de entrada (primeira visita da sessão). O script do <head> liga .is-loading. */
+
+.loader {
+  display: none;
+}
+
+.is-loading {
+  overflow: hidden;
+  animation: loader-unlock 0s linear 4s forwards;
+}
+
+.is-loading .loader {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: block;
+  background-color: var(--color-paper);
+  transition: transform 800ms var(--ease-out);
+  /* Se o JS falhar, a tela some sozinha depois de alguns segundos. */
+  animation: loader-failsafe 0s linear 4s forwards;
+}
+
+.is-revealing .loader {
+  transform: translateY(-100%);
+}
+
+.loader__inner {
+  display: grid;
+  align-content: end;
+  gap: var(--space-4);
+  height: 100%;
+  padding-bottom: clamp(2rem, 6vh, 4rem);
+}
+
+.loader__name {
+  color: var(--color-ink-3);
+}
+
+.loader__count {
+  margin-left: var(--optical-offset);
+  font-size: var(--text-hero);
+  font-weight: 800;
+  font-stretch: var(--stretch-display);
+  font-variant-numeric: tabular-nums;
+  line-height: 0.84;
+  letter-spacing: var(--tracking-display);
+}
+
+.loader__bar {
+  height: 2px;
+  background-color: var(--color-line);
+}
+
+.loader__bar span {
+  display: block;
+  height: 100%;
+  background-color: var(--color-cobalt);
+  transform: scaleX(var(--progress, 0));
+  transform-origin: left;
+}
+
+/* Segura a animação de entrada do hero até a tela de entrada sair. */
+.is-loading:not(.is-revealing) .hero__line,
+.is-loading:not(.is-revealing) [data-intro] {
+  animation-play-state: paused;
+}
+
+@keyframes loader-unlock {
+  to {
+    overflow: visible;
+  }
+}
+
+@keyframes loader-failsafe {
+  to {
+    visibility: hidden;
+  }
 }

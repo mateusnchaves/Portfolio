@@ -16,6 +16,8 @@ export const ui = {
   team: 'Equipe',
   repo: 'GitHub',
   demo: 'Demo',
+  viewDemo: 'Ver demo',
+  viewCode: 'Ver código',
   caseOpen: 'Ver case',
   caseClose: 'Fechar case',
   problem: 'Problema',

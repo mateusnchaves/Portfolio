@@ -9,7 +9,6 @@
 }
 
 html {
-  color-scheme: light;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
@@ -78,7 +77,7 @@ code {
 }
 
 ::selection {
-  background-color: var(--color-cobalt);
+  background-color: var(--color-cobalt-fill);
   color: var(--color-on-cobalt);
 }
 

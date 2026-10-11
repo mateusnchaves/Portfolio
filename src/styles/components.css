@@ -97,7 +97,7 @@
   height: 0.5rem;
   border-radius: 50%;
   background-color: var(--color-cobalt);
-  box-shadow: 0 0 0 0.25rem rgb(31 63 209 / 0.14);
+  box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--color-cobalt) 14%, transparent);
 }
 
 /* Placeholder — conteúdo ainda não fornecido */
@@ -105,7 +105,7 @@
 .placeholder {
   padding: 0.1em 0.4em;
   background-color: var(--color-cobalt-tint);
-  outline: 1px dashed rgb(31 63 209 / 0.55);
+  outline: 1px dashed color-mix(in srgb, var(--color-cobalt) 55%, transparent);
   outline-offset: -1px;
   color: var(--color-ink-2);
   font-size: 0.9em;
@@ -124,6 +124,10 @@
 
 /* Media frame */
 
+.media__link {
+  display: block;
+}
+
 .media {
   display: grid;
   gap: var(--space-3);
@@ -141,7 +145,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  border: 1px solid rgb(15 15 14 / 0.08);
+  border: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
   pointer-events: none;
 }
 
@@ -169,7 +173,7 @@
   max-width: 100%;
   padding: var(--space-4) var(--space-5);
   background-color: var(--color-paper);
-  outline: 1px dashed rgb(31 63 209 / 0.55);
+  outline: 1px dashed color-mix(in srgb, var(--color-cobalt) 55%, transparent);
   outline-offset: -1px;
   text-align: center;
 }
@@ -182,4 +186,64 @@
   color: var(--color-ink-3);
   font-size: 0.75rem;
   overflow-wrap: anywhere;
+}
+
+/* Cursor "Ver demo" sobre os prints dos projetos */
+
+.cursor-label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  pointer-events: none;
+}
+
+.cursor-label__inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 0.875rem;
+  background-color: var(--color-cobalt-fill);
+  color: var(--color-on-cobalt);
+  white-space: nowrap;
+  transform: translate(-50%, -50%) scale(0);
+  transition: transform 260ms var(--ease-out);
+}
+
+.cursor-label.is-visible .cursor-label__inner {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.has-cursor-label .media__link {
+  cursor: none;
+}
+
+/* Títulos quebrados em palavras (interactions/motion.js) */
+
+.word {
+  display: inline-block;
+  overflow: hidden;
+  /* Respiro para acentos e descendentes não serem cortados pela máscara. */
+  padding-block: 0.08em;
+  margin-block: -0.08em;
+  vertical-align: top;
+}
+
+.word__inner {
+  display: inline-block;
+}
+
+/* Lenis */
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
 }

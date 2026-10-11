@@ -12,10 +12,14 @@ import { mount, setText } from './lib/dom.js';
 import { html } from './lib/html.js';
 import { findTodos } from './lib/todo.js';
 import { initCopy } from './interactions/copy.js';
+import { initCursorLabel } from './interactions/cursor-label.js';
 import { initDisclosures } from './interactions/disclosure.js';
 import { initGridOverlay } from './interactions/grid-overlay.js';
+import { initHeroName } from './interactions/hero-name.js';
+import { initMotion } from './interactions/motion.js';
 import { initNavigation } from './interactions/navigation.js';
 import { initReveal } from './interactions/reveal.js';
+import { initTheme } from './interactions/theme.js';
 
 function render() {
   mount('projects', html`<ol class="cases">${projects.map((project, i) => html`<li>${projectCase(project, i)}</li>`)}</ol>`);
@@ -41,9 +45,13 @@ function reportPendingContent() {
 }
 
 render();
+initTheme();
 initNavigation();
 initReveal();
 initDisclosures();
 initCopy();
+initCursorLabel();
 initGridOverlay();
+initHeroName();
+initMotion();
 reportPendingContent();

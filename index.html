@@ -7,7 +7,7 @@
     <meta name="description" content="Portfólio de Mateus Chaves, estudante de Análise e Desenvolvimento de Sistemas. Desenvolvimento web, automação de processos e dados.">
     <meta name="author" content="Mateus Novais Chaves">
     <meta name="color-scheme" content="light">
-    <meta name="theme-color" content="#dbdbdb">
+    <meta name="theme-color" content="#f4f3ef">
     <link rel="canonical" href="https://mateusnchaves.github.io/">
 
     <meta property="og:type" content="website">
@@ -36,7 +36,22 @@
     <link rel="stylesheet" href="src/styles/components.css">
     <link rel="stylesheet" href="src/styles/sections.css">
 
-    <script>document.documentElement.classList.add('js');</script>
+    <script>
+      (function () {
+        var root = document.documentElement;
+        root.classList.add('js');
+        // Aplica o tema salvo antes da primeira pintura, para a página não piscar no tema errado.
+        try {
+          if (localStorage.getItem('theme') === 'dark') root.dataset.theme = 'dark';
+        } catch (e) {}
+        // Tela de entrada: só na primeira visita da sessão e sem movimento reduzido.
+        try {
+          if (!sessionStorage.getItem('intro-seen') && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            root.classList.add('is-loading');
+          }
+        } catch (e) {}
+      })();
+    </script>
     <script type="module" src="src/main.js"></script>
 
     <script type="application/ld+json">
@@ -77,12 +92,59 @@
       </defs>
     </svg>
 
+    <div class="loader" aria-hidden="true" data-loader>
+      <div class="container loader__inner">
+        <p class="loader__name meta">Mateus Chaves</p>
+        <p class="loader__count" data-loader-count>000</p>
+        <div class="loader__bar"><span data-loader-bar></span></div>
+      </div>
+    </div>
+    <script>
+      // Contador da tela de entrada: sobe de 000 a 100 em ~1,4s (segura em 90 até a página carregar) e sai para cima.
+      (function () {
+        var root = document.documentElement;
+        if (!root.classList.contains('is-loading')) return;
+
+        var DURATION = 1400;
+        var MAX_WAIT = 3500;
+        var count = document.querySelector('[data-loader-count]');
+        var bar = document.querySelector('[data-loader-bar]');
+        var start = performance.now();
+        var loaded = false;
+        window.addEventListener('load', function () { loaded = true; }, { once: true });
+
+        function frame(now) {
+          var elapsed = now - start;
+          var ready = loaded || elapsed > MAX_WAIT;
+          var t = Math.min(elapsed / DURATION, ready ? 1 : 0.9);
+          var progress = 1 - Math.pow(1 - t, 3);
+          count.textContent = String(Math.round(progress * 100)).padStart(3, '0');
+          bar.style.setProperty('--progress', progress.toFixed(3));
+          if (t < 1) return requestAnimationFrame(frame);
+
+          try { sessionStorage.setItem('intro-seen', '1'); } catch (e) {}
+          setTimeout(function () {
+            root.classList.add('is-revealing');
+            setTimeout(function () { root.classList.remove('is-loading', 'is-revealing'); }, 800);
+          }, 200);
+        }
+        requestAnimationFrame(frame);
+      })();
+    </script>
+
     <a class="skip-link" href="#main">Pular para o conteúdo</a>
 
     <header class="site-header" data-header>
       <div class="container site-header__inner">
         <a class="brand" href="#top"><span class="brand__mark" aria-hidden="true"></span>Mateus Chaves</a>
         <p class="site-header__current meta" aria-hidden="true" data-current-section>00 Index</p>
+        <button
+          class="theme-toggle"
+          type="button"
+          aria-pressed="false"
+          aria-label="Modo escuro"
+          data-theme-toggle
+        ><span class="theme-toggle__mark" aria-hidden="true"></span></button>
         <button
           class="menu-toggle meta"
           type="button"
@@ -101,6 +163,10 @@
             <li><a class="site-nav__link" href="#currently"><span class="site-nav__index">05</span><span lang="en" data-label>Currently</span></a></li>
             <li><a class="site-nav__link" href="#contact"><span class="site-nav__index">06</span><span lang="en" data-label>Contact</span></a></li>
           </ol>
+          <button class="theme-toggle theme-toggle--menu" type="button" aria-pressed="false" data-theme-toggle>
+            <span class="theme-toggle__mark" aria-hidden="true"></span>
+            <span>Modo escuro</span>
+          </button>
         </nav>
       </div>
     </header>
@@ -154,7 +220,7 @@
             </div>
             <div class="fact">
               <dt class="meta">Stack</dt>
-              <dd>HTML • CSS • JavaScript • TypeScript • Angular • Bootstrap • Python • SQL • Power BI • Git • GitHub • IA • Next.js • Tailwind CSS • Supabase</dd>
+              <dd>HTML • CSS • JavaScript • TypeScript • Angular • Bootstrap • Python • SQL • BI • Git • GitHub • IA • Next.js • Tailwind CSS • Supabase</dd>
             </div>
             <div class="fact">
               <dt class="meta">Links</dt>

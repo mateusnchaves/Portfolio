@@ -40,6 +40,12 @@
   text-align: right;
 }
 
+/* Letras do nome, separadas por interactions/hero-name.js. */
+.hero__letter {
+  display: inline-block;
+  color: color-mix(in srgb, var(--color-cobalt) var(--pull, 0%), var(--color-ink));
+}
+
 .hero__body {
   row-gap: var(--space-6);
   margin-top: clamp(1.75rem, 4vh, 3rem);
@@ -379,10 +385,17 @@
   color: var(--color-ink-2);
 }
 
+/* Pan vertical: screenshots mais altos que o quadro rolam de cima a baixo no hover. */
+.case .media__frame > img {
+  object-position: 50% 0;
+  transition: object-position 1200ms var(--ease-out);
+}
+
 @media (hover: hover) and (pointer: fine) {
-  .case:hover .media__frame > img,
-  .case:hover .media__canvas {
-    transform: scale(1.025);
+  .case:hover .media__frame > img {
+    object-position: 50% 100%;
+    transition-duration: 5000ms;
+    transition-timing-function: ease-in-out;
   }
 }
 
@@ -406,18 +419,48 @@
     grid-column: 11 / -1;
   }
 
+  /* Zig-zag: imagem e texto dividem a largura e trocam de lado a cada case. */
   .case__info {
-    grid-row: 2 / span 2;
-    grid-column: 1 / span 3;
-  }
-
-  .case__media,
-  .case__details {
-    grid-column: 4 / -1;
+    grid-row: 2;
+    grid-column: 8 / -1;
+    align-self: center;
   }
 
   .case__media {
     grid-row: 2;
+    grid-column: 1 / span 6;
+    align-self: start;
+  }
+
+  .cases > li:nth-child(even) .case__info {
+    grid-column: 1 / span 5;
+  }
+
+  .cases > li:nth-child(even) .case__media {
+    grid-column: 7 / -1;
+  }
+
+  .case__details {
+    grid-column: 1 / -1;
+  }
+
+  /* Moldura: o print aparece inteiro, com respiro, em vez de sangrar até a borda. */
+  .case .media__frame {
+    aspect-ratio: auto;
+    padding: var(--space-5);
+    transition: background-color var(--duration-base) ease;
+  }
+
+  .case .media__frame > img,
+  .case .media__canvas {
+    height: auto;
+    aspect-ratio: 16 / 10;
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-ink) 8%, transparent);
+  }
+
+  .case:hover .media__frame::after,
+  .case:focus-within .media__frame::after {
+    border-color: var(--color-cobalt);
   }
 
   .case__details {
@@ -774,13 +817,13 @@
 .contact {
   margin-top: var(--section-space);
   padding-top: clamp(1.5rem, 4vw, 3rem);
-  background-color: var(--color-cobalt);
+  background-color: var(--color-cobalt-fill);
   color: var(--color-on-cobalt);
 }
 
 .contact ::selection {
-  background-color: var(--color-paper);
-  color: var(--color-cobalt);
+  background-color: var(--color-on-cobalt);
+  color: var(--color-cobalt-fill);
 }
 
 .contact :focus-visible,
@@ -851,7 +894,7 @@
   align-items: center;
   min-height: 2.75rem;
   padding-inline: var(--space-4);
-  border: 1px solid rgb(244 243 239 / 0.5);
+  border: 1px solid color-mix(in srgb, var(--color-on-cobalt) 50%, transparent);
   font-family: var(--font-mono);
   font-size: var(--text-meta);
   letter-spacing: var(--tracking-meta);
@@ -866,15 +909,15 @@
 .contact__copy[data-state="copied"] {
   border-color: var(--color-on-cobalt);
   background-color: var(--color-on-cobalt);
-  color: var(--color-cobalt);
+  color: var(--color-cobalt-fill);
 }
 
 .contact__links {
-  border-bottom: 1px solid rgb(244 243 239 / 0.28);
+  border-bottom: 1px solid color-mix(in srgb, var(--color-on-cobalt) 28%, transparent);
 }
 
 .contact__links li {
-  border-top: 1px solid rgb(244 243 239 / 0.28);
+  border-top: 1px solid color-mix(in srgb, var(--color-on-cobalt) 28%, transparent);
 }
 
 .contact__links .link-arrow {
