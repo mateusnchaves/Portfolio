@@ -92,7 +92,7 @@ export const projects = [
     result:
       'Aplicação funcional com cadastro e login, veículos por usuário, planejamento com múltiplas recargas e histórico de rotas. O backend tem 57 testes automatizados e fallbacks para falhas dos provedores externos. A qualidade do plano ainda depende da cobertura de estações do Open Charge Map.',
     links: {
-      repo: todo('Link do repositório no GitHub'),
+      repo: 'https://github.com/mateusnchaves/EcoWay',
       demo: todo('Link da versão publicada'),
     },
     image: {
