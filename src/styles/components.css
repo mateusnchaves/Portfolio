@@ -247,3 +247,77 @@ html.lenis body {
 .lenis.lenis-stopped {
   overflow: hidden;
 }
+
+/* Conquistas no estilo de jogo de blocos (interactions/achievements.js) */
+
+.toasts {
+  position: fixed;
+  top: calc(var(--header-height) + var(--space-4));
+  right: var(--margin);
+  z-index: 70;
+  display: grid;
+  gap: var(--space-2);
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  width: min(20rem, calc(100vw - 2 * var(--margin)));
+  padding: 0.625rem 0.875rem;
+  border: 2px solid #000;
+  background-color: #212121;
+  /* Borda dupla "pixelada": claro em cima/esquerda, escuro embaixo/direita. */
+  box-shadow:
+    inset 2px 2px 0 #555,
+    inset -2px -2px 0 #111;
+  font-family: "Pixelify Sans", var(--font-mono);
+  font-weight: 500;
+  line-height: 1.2;
+  transform: translateX(calc(100% + var(--margin)));
+  transition: transform 450ms var(--ease-out);
+}
+
+.toast.is-in {
+  transform: none;
+}
+
+.toast.is-out {
+  transform: translateX(calc(100% + var(--margin)));
+  transition-timing-function: ease-in;
+}
+
+.toast__icon {
+  flex: none;
+  width: 2rem;
+  height: 2rem;
+}
+
+.toast__kind {
+  color: #ffff55;
+}
+
+.toast__kind--challenge {
+  color: #ff55ff;
+}
+
+.toast__name {
+  margin-top: 0.125rem;
+  color: #fff;
+}
+
+@media (max-width: 47.99em) {
+  .toasts {
+    right: 50%;
+    translate: 50% 0;
+  }
+
+  .toast {
+    transform: translateY(calc(-100% - var(--header-height) - var(--space-4)));
+  }
+
+  .toast.is-out {
+    transform: translateY(calc(-100% - var(--header-height) - var(--space-4)));
+  }
+}

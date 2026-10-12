@@ -4,13 +4,14 @@ import { currently } from './data/currently.js';
 import { experience } from './data/experience.js';
 import { projects } from './data/projects.js';
 import { capabilityItem } from './components/capability-item.js';
-import { currentlyItem } from './components/currently-item.js';
+import { availability, currentlyItem } from './components/currently-item.js';
 import { experienceEntry } from './components/experience-entry.js';
 import { projectCase } from './components/project-case.js';
 import { countLabel, formatMonth, tenure } from './lib/format.js';
 import { mount, setText } from './lib/dom.js';
 import { html } from './lib/html.js';
 import { findTodos } from './lib/todo.js';
+import { initAchievements } from './interactions/achievements.js';
 import { initContactGlobe } from './interactions/contact-globe.js';
 import { initCopy } from './interactions/copy.js';
 import { initCursorLabel } from './interactions/cursor-label.js';
@@ -28,7 +29,10 @@ function render() {
   mount('projects', html`<ol class="cases">${projects.map((project, i) => html`<li>${projectCase(project, i)}</li>`)}</ol>`);
   mount('experience', html`<div class="experience">${experience.map(experienceEntry)}</div>`);
   mount('capabilities', html`<ol class="capabilities">${capabilities.map(capabilityItem)}</ol>`);
-  mount('currently', html`<ul class="now">${currently.items.map(currentlyItem)}</ul>`);
+  mount(
+    'currently',
+    html`<ul class="now">${currently.items.map(currentlyItem)}</ul>${currently.availability && availability(currently.availability)}`,
+  );
 
   const allRoles = experience.flatMap((entry) => entry.roles);
   setText('[data-meta="projects"]', countLabel(projects.length, plurals.project));
@@ -53,6 +57,7 @@ initNavigation();
 initReveal();
 initDisclosures();
 initTimeline();
+initAchievements();
 initCopy();
 initCursorLabel();
 initGridOverlay();

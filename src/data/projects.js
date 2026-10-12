@@ -24,7 +24,7 @@ export const projects = [
     solution:
       'O Finora junta tudo em um só lugar. Mostra receitas, despesas e gastos por categoria, avisa quando um orçamento está perto do limite e lança contas recorrentes sozinho. Importa extratos OFX/CSV com categorização automática e detecção de duplicados. Calcula ações, FIIs, cripto e renda fixa (CDI, Selic e IPCA do Banco Central) com cotações do dia e preço médio. A segurança fica no banco de dados, com Row Level Security em todas as tabelas.',
     result:
-      'Projeto em desenvolvimento. O MVP já está funcional, com as 8 fases planejadas concluídas: lançamentos, dashboard, orçamentos, recorrentes, importação de extratos, investimentos, renda fixa e patrimônio total. Tem mais de 100 testes automatizados, CI no GitHub e uma conta demo com dados de exemplo que voltam ao original toda noite. Próximos passos: publicação na Vercel, login com Google e integração com Open Finance.',
+      'Projeto em desenvolvimento. O MVP já está funcional, com as 8 fases planejadas concluídas: lançamentos, dashboard, orçamentos, recorrentes, importação de extratos, investimentos, renda fixa e patrimônio total. Tem mais de 100 testes automatizados, CI no GitHub e uma conta demo com dados de exemplo que voltam ao original toda noite. Já está publicado na Vercel; o próximo passo é o login com Google.',
     links: {
       repo: 'https://github.com/mateusnchaves/Finora',
       demo: 'https://finora-wl7u.vercel.app/login',
