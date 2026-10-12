@@ -22,6 +22,7 @@ import { initNavigation } from './interactions/navigation.js';
 import { initPortrait } from './interactions/portrait.js';
 import { initReveal } from './interactions/reveal.js';
 import { initTheme } from './interactions/theme.js';
+import { initTimeline } from './interactions/timeline.js';
 
 function render() {
   mount('projects', html`<ol class="cases">${projects.map((project, i) => html`<li>${projectCase(project, i)}</li>`)}</ol>`);
@@ -51,6 +52,7 @@ initTheme();
 initNavigation();
 initReveal();
 initDisclosures();
+initTimeline();
 initCopy();
 initCursorLabel();
 initGridOverlay();

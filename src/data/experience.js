@@ -13,6 +13,12 @@ export const experience = [
           'Planilhas operacionais e fórmulas em Excel para cálculos, conferências e acompanhamento do processo.',
         ],
         skills: ['HTML', 'CSS', 'JavaScript', 'Python', 'Excel', 'Service / Telecontrol'],
+        // Trechos do texto ligados a cada tecnologia, além do próprio nome (passe o mouse numa tag no site).
+        aliases: {
+          HTML: ['Dashboard web'],
+          CSS: ['Dashboard web'],
+          JavaScript: ['Dashboard web', 'extensão de navegador'],
+        },
       },
       {
         title: 'Aprendiz de Controles Internos',
@@ -24,6 +30,10 @@ export const experience = [
           'Padronização de documentos de processos, rondas de controles e inventários físicos de máquinas e ativos.',
         ],
         skills: ['Gestão de riscos', 'Auditoria', 'Documentação de processos', 'Relatórios'],
+        aliases: {
+          'Gestão de riscos': ['riscos'],
+          'Documentação de processos': ['documentos de processos'],
+        },
       },
     ],
   },

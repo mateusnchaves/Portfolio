@@ -541,7 +541,8 @@
   grid-column: 1 / -1;
 }
 
-.timeline::before {
+.timeline::before,
+.timeline::after {
   content: "";
   position: absolute;
   top: 0.5rem;
@@ -551,8 +552,17 @@
   background-color: var(--color-line);
 }
 
+/* Linha cobalto que se pinta conforme a rolagem (interactions/timeline.js define --progress). */
+.timeline::after {
+  background-color: var(--color-cobalt);
+  transform: scaleY(var(--progress, 1));
+  transform-origin: top;
+}
+
 .timeline__item {
   position: relative;
+  /* Acima da linha da timeline, para os quadrados cobrirem o traço cobalto. */
+  z-index: 1;
   padding-bottom: var(--space-8);
 }
 
@@ -574,6 +584,24 @@
 .timeline__item.is-current::before {
   border-color: var(--color-cobalt);
   background-color: var(--color-cobalt);
+}
+
+/* O cargo atual pulsa de leve, como o status "Aberto a oportunidades" do hero. */
+@media (prefers-reduced-motion: no-preference) {
+  .timeline__item.is-current::before {
+    animation: timeline-pulse 2400ms ease-out infinite;
+  }
+}
+
+@keyframes timeline-pulse {
+  from {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-cobalt) 45%, transparent);
+  }
+
+  70%,
+  to {
+    box-shadow: 0 0 0 0.5rem transparent;
+  }
 }
 
 .timeline__period,
@@ -621,6 +649,70 @@
 
 .timeline__content .tags {
   margin-top: var(--space-5);
+}
+
+/* Tecnologias ligadas ao texto: passar o mouse na tag acende os trechos, e vice-versa. */
+.skill-mark {
+  background: none;
+  color: inherit;
+  text-decoration: underline dotted color-mix(in srgb, var(--color-ink-3) 60%, transparent);
+  text-underline-offset: 0.25em;
+  transition:
+    color var(--duration-fast) ease,
+    background-color var(--duration-fast) ease;
+}
+
+.skill-mark.is-lit {
+  background-color: var(--color-cobalt-tint);
+  color: var(--color-cobalt);
+  text-decoration-color: var(--color-cobalt);
+}
+
+.tag--linked {
+  cursor: default;
+  transition:
+    color var(--duration-fast) ease,
+    border-color var(--duration-fast) ease;
+}
+
+.tag--linked.is-lit {
+  border-color: var(--color-cobalt);
+  color: var(--color-cobalt);
+}
+
+/* Barra do período na empresa: um segmento por cargo, proporcional à duração. */
+.org__span {
+  display: grid;
+  gap: var(--space-2);
+  max-width: 18rem;
+  margin-top: var(--space-4);
+}
+
+.org__bar {
+  display: flex;
+  gap: 2px;
+  height: 0.375rem;
+}
+
+.org__segment {
+  flex-basis: 0;
+  background-color: var(--color-ink-3);
+  transform-origin: left;
+  transition: transform 900ms var(--ease-out) calc(300ms + var(--i, 0) * 250ms);
+}
+
+.org__segment.is-current {
+  background-color: var(--color-cobalt);
+}
+
+.has-reveal .org__aside:not(.is-revealed) .org__segment {
+  transform: scaleX(0);
+}
+
+.org__ticks {
+  display: flex;
+  justify-content: space-between;
+  color: var(--color-ink-3);
 }
 
 @media (min-width: 64em) {
@@ -755,9 +847,25 @@
   font-size: 1.125rem;
 }
 
-.about__facts {
+.about__side {
+  display: grid;
   grid-column: 1 / -1;
+  align-content: start;
+  gap: var(--space-6);
+}
+
+.about__facts {
   border-bottom: var(--rule);
+}
+
+.about__cv {
+  display: grid;
+  justify-items: start;
+  gap: var(--space-2);
+}
+
+.about__cv .meta {
+  color: var(--color-ink-3);
 }
 
 .about__fact {
@@ -780,7 +888,7 @@
     grid-column: 1 / span 7;
   }
 
-  .about__facts {
+  .about__side {
     grid-column: 8 / -1;
   }
 }
@@ -794,7 +902,7 @@
     grid-column: 4 / span 5;
   }
 
-  .about__facts {
+  .about__side {
     grid-column: 10 / -1;
   }
 }

@@ -5,6 +5,7 @@
 export const ui = {
   pending: 'Pendente',
   present: 'Atual',
+  today: 'Hoje',
   since: 'Desde',
   updated: 'Atualizado em',
   case: 'Case',
