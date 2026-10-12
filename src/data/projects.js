@@ -1,21 +1,5 @@
 import { todo } from '../lib/todo.js';
 
-/**
- * Projetos da seção "Selected Work", na ordem em que aparecem.
- *
- * Campos com todo('...') aparecem no site com a etiqueta "Pendente".
- * Substitua cada um pelo valor real, por exemplo:
- *   category: 'Aplicação web',
- *   stack: ['HTML', 'CSS', 'JavaScript'],
- *   links: { repo: 'https://github.com/mateusnchaves/nome-do-repo', demo: null },
- *
- * Opcionais — use null para esconder:
- *   result      resultado ou aprendizado, quando existir
- *   team        ['Nome', 'Nome'] em projetos feitos em grupo
- *   links.demo  link da versão publicada
- *   image       { src: 'assets/projects/<id>.webp', alt: 'O que a tela mostra' }
- *               (1600 × 1000 px; veja assets/projects/README.md)
- */
 export const projects = [
    {
     id: 'finora',
@@ -43,10 +27,10 @@ export const projects = [
       'Projeto em desenvolvimento. O MVP já está funcional, com as 8 fases planejadas concluídas: lançamentos, dashboard, orçamentos, recorrentes, importação de extratos, investimentos, renda fixa e patrimônio total. Tem mais de 100 testes automatizados, CI no GitHub e uma conta demo com dados de exemplo que voltam ao original toda noite. Próximos passos: publicação na Vercel, login com Google e integração com Open Finance.',
     links: {
       repo: 'https://github.com/mateusnchaves/Finora',
-      demo: null,
+      demo: 'https://finora-wl7u.vercel.app/login',
     },
     image: {
-      src: './assets/projects/finora.png',
+      src: './assets/projects/finora.webp',
       alt: 'Tela do Finora mostrando o resumo do mês.',
     },
   },
@@ -71,7 +55,7 @@ export const projects = [
       demo: todo('Link da versão publicada'),
     },
     image: {
-      src: './assets/projects/smartvagas_login.png',
+      src: './assets/projects/smartvagas_login.webp',
       alt: 'Tela do pátio do Smart Vagas, com o campo de placa no estilo Mercosul e o mapa de vagas em que as livres aparecem em verde claro, as ocupadas em cinza-escuro com a placa e as reservadas em âmbar.',
     },
   },

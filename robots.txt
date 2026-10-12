@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mateusnchaves.github.io/sitemap.xml
+Sitemap: https://mateusnchaves.github.io/Portfolio/sitemap.xml
