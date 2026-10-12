@@ -1,8 +1,4 @@
-/**
- * Experiência profissional, da mais recente para a mais antiga.
- * Datas no formato 'AAAA-MM'. Use end: null no cargo atual.
- * Para adicionar outra empresa, inclua um novo objeto { company, roles } nesta lista.
- */
+
 export const experience = [
   {
     company: 'Imbera Brasil',

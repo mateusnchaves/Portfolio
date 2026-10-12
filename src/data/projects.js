@@ -52,10 +52,10 @@ export const projects = [
       'Aplicação funcional com três perfis (dono, operador e motorista) e permissões checadas no servidor, além de 119 testes automatizados nas regras de preço, mensalidade, reserva e caixa. Em um teste com 8 reservas simultâneas para 5 vagas, não houve nenhuma reserva duplicada. O pagamento da reserva ainda é confirmado manualmente no guichê; a integração com um gateway Pix fica para a próxima versão.',
     links: {
       repo: 'https://github.com/mateusnchaves/SmartVagas',
-      demo: todo('Link da versão publicada'),
+      demo: null,
     },
     image: {
-      src: './assets/projects/smartvagas_login.webp',
+      src: './assets/projects/smartvagas.webp',
       alt: 'Tela do pátio do Smart Vagas, com o campo de placa no estilo Mercosul e o mapa de vagas em que as livres aparecem em verde claro, as ocupadas em cinza-escuro com a placa e as reservadas em âmbar.',
     },
   },
@@ -68,7 +68,7 @@ export const projects = [
     summary:
       'Plataforma para planejar viagens de carro elétrico no Brasil: calcula a autonomia, sugere estações de recarga compatíveis e monta o plano completo da rota. Projeto em equipe da Facens, na disciplina UPX III.',
     stack: ['Flask', 'SQLite', 'JavaScript', 'Vite', 'Leaflet', 'OpenRouteService', 'Open Charge Map'],
-    team: ['Mateus Chaves', 'Vinicius Giroto', 'Thalysson Sergio', 'Vinicius Paes', 'Rafael Vidal'],
+    team: ['Mateus Chaves', 'Vinicius Giroto', 'Thalysson Sergio', 'Vinicius Paes', 'Rafael Vidal', 'Vitor Tomirotte'],
     problem:
       'Quem viaja de carro elétrico precisa saber, antes de sair, se a bateria chega ao destino e onde recarregar no caminho. Fazer essa conta à mão, cruzando autonomia do veículo, distância e estações compatíveis, é trabalhoso e arriscado.',
     solution:
@@ -77,7 +77,7 @@ export const projects = [
       'Aplicação funcional com cadastro e login, veículos por usuário, planejamento com múltiplas recargas e histórico de rotas. O backend tem 57 testes automatizados e fallbacks para falhas dos provedores externos. A qualidade do plano ainda depende da cobertura de estações do Open Charge Map.',
     links: {
       repo: 'https://github.com/mateusnchaves/EcoWay',
-      demo: todo('Link da versão publicada'),
+      demo: null,
     },
     image: {
       src: './assets/projects/ecoway.png',

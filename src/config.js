@@ -1,7 +1,6 @@
 /**
  * Textos de interface e convenções usadas pelos componentes.
- * O conteúdo (projetos, experiência etc.) fica em src/data.
- */
+ **/
 
 export const ui = {
   pending: 'Pendente',

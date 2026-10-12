@@ -6,10 +6,6 @@ import { externalLink, filled, icon, tagList } from './ui.js';
 
 const usable = (url) => (url && !isTodo(url) ? url : null);
 
-/**
- * O print leva para a demo (ou, sem demo, para o repositório). Fica fora da
- * ordem de tabulação: os mesmos links já existem na lista ao lado.
- */
 function mediaLink(project, content) {
   const { repo, demo } = project.links ?? {};
   const href = usable(demo) ?? usable(repo);

@@ -10,7 +10,7 @@
   --color-line: #d7d4cc;
   --color-cobalt: #1f3fd1;
   --color-cobalt-tint: rgb(31 63 209 / 0.06);
-  /* Fundo cobalto com texto claro (contato, rodapé, seleção). No claro é igual ao acento. */
+  /* Fundo cobalto com texto claro (contato, rodapé, seleção). */
   --color-cobalt-fill: var(--color-cobalt);
   --color-on-cobalt: #f4f3ef;
   --color-on-cobalt-2: #c9d2f7;

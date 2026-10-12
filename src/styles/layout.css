@@ -271,6 +271,11 @@
   padding-top: var(--section-space);
 }
 
+/* Logo depois do hero, que já fecha com a linha dos fatos, metade do respiro basta. */
+.hero + .section {
+  padding-top: calc(var(--section-space) / 2);
+}
+
 .section-head {
   row-gap: var(--space-5);
   margin-bottom: clamp(3rem, 7vw, 6.5rem);
