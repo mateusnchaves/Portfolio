@@ -961,7 +961,7 @@
   }
 }
 
-/* Disponibilidade: fecha a seção com o que o recrutador procura antes de chamar. */
+/* Disponibilidade: linha que fecha a seção, logo antes do contato. */
 .availability {
   display: grid;
   gap: var(--space-4);

@@ -1,4 +1,3 @@
-
 export const experience = [
   {
     company: 'Imbera Brasil',

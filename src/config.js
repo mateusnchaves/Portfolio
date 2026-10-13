@@ -1,6 +1,6 @@
 /**
  * Textos de interface e convenções usadas pelos componentes.
- **/
+ */
 
 export const ui = {
   pending: 'Pendente',

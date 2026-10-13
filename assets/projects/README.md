@@ -1,9 +1,10 @@
 # Screenshots dos projetos
 
-Coloque aqui uma imagem por projeto, com o `id` dele no nome:
+Uma imagem por projeto, com o `id` dele no nome:
 
-- `gestao-financeira-pessoal.webp`
-- `rede-recarga-eletrica.webp`
+- `finora.webp`
+- `smartvagas.webp`
+- `ecoway.webp`
 
 ## Formato
 
@@ -15,7 +16,7 @@ Depois, informe a imagem em `src/data/projects.js`:
 
 ```js
 image: {
-  src: 'assets/projects/gestao-financeira-pessoal.webp',
+  src: 'assets/projects/finora.webp',
   alt: 'Descreva o que aparece na tela',
 },
 ```

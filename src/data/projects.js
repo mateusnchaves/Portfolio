@@ -80,7 +80,7 @@ export const projects = [
       demo: null,
     },
     image: {
-      src: './assets/projects/ecoway.png',
+      src: './assets/projects/ecoway.webp',
       alt: 'Página inicial do EcoWay, com o título "Planeje rotas elétricas com segurança e eficiência" e o resumo de uma rota de São Paulo a Curitiba com duas paradas de recarga.',
     },
   },

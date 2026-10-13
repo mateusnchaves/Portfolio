@@ -112,7 +112,6 @@ function start(points, hero, canvas) {
     if (!frame) draw(performance.now());
   }).observe(canvas);
 
-  // Fora da tela, para de desenhar.
   new IntersectionObserver(([entry]) => {
     visible = entry.isIntersecting;
     if (visible) wake();
@@ -123,7 +122,6 @@ function start(points, hero, canvas) {
   }).observe(hero);
 
   if (interactive) {
-    // O rosto vira na direção do mouse, em qualquer ponto da página.
     window.addEventListener('pointermove', (event) => {
       const rect = canvas.getBoundingClientRect();
       const nx = clamp((event.clientX - (rect.left + rect.width / 2)) / (window.innerWidth / 2));
