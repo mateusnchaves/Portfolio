@@ -5,33 +5,38 @@ export const projects = [
     id: 'finora',
     title: 'Finora',
     featured: true,
-    category: 'Aplicação Web Full-Stack',
+    category: 'Aplicação web full-stack · Projeto pessoal',
     year: '2026',
     summary:
-      'App web de gestão financeira pessoal que mostra para onde vai o seu dinheiro e acompanha seus investimentos com cotações reais.',
+      'App de finanças pessoais que mostra para onde vai o seu dinheiro: faturas de cartão, orçamentos, metas e investimentos com cotações reais, além da Clara, uma assistente com IA que responde perguntas sobre os seus próprios números. Instala no celular como app e funciona offline.',
     stack: [
       'Next.js 16',
       'TypeScript',
       'Tailwind CSS 4',
       'Supabase (Postgres, Auth, RLS, pg_cron)',
+      'Gemini (IA)',
+      'PWA · Web Push',
       'Zod',
       'Vitest',
+      'Playwright',
       'GitHub Actions',
       'Vercel',
     ],
     problem:
       'Controlar finanças costuma exigir planilhas espalhadas: os gastos ficam num lugar, os investimentos em outro, e ninguém sabe ao certo para onde o dinheiro foi no mês nem quanto vale o patrimônio hoje.',
     solution:
-      'O Finora junta tudo em um só lugar. Mostra receitas, despesas e gastos por categoria, avisa quando um orçamento está perto do limite e lança contas recorrentes sozinho. Importa extratos OFX/CSV com categorização automática e detecção de duplicados. Calcula ações, FIIs, cripto e renda fixa (CDI, Selic e IPCA do Banco Central) com cotações do dia e preço médio. A segurança fica no banco de dados, com Row Level Security em todas as tabelas.',
+      'O Finora junta tudo em um só lugar: contas, faturas de cartão com parcelas e limite disponível, orçamentos com alertas, metas de economia e lançamentos recorrentes criados sozinhos. Importa extratos OFX/CSV com categorias sugeridas a partir do seu histórico e detecção de duplicados. Calcula ações, FIIs, cripto e renda fixa (CDI, Selic e IPCA do Banco Central) com cotações do dia e preço médio. A Clara responde perguntas como "quanto gastei com Uber em agosto?" usando só ferramentas de leitura, mostrando de onde vieram os números. No celular, instala como app, abre offline, guarda lançamentos feitos sem internet e avisa de fatura perto do vencimento. A segurança fica no banco, com Row Level Security em todas as tabelas, inclusive para a IA.',
     result:
-      'Projeto em desenvolvimento. O MVP já está funcional, com as 8 fases planejadas concluídas: lançamentos, dashboard, orçamentos, recorrentes, importação de extratos, investimentos, renda fixa e patrimônio total. Tem mais de 100 testes automatizados, CI no GitHub e uma conta demo com dados de exemplo que voltam ao original toda noite. Já está publicado na Vercel; o próximo passo é o login com Google.',
+      'As 13 fases planejadas estão concluídas e o app está publicado na Vercel, com login por email, Google ou conta demo (seis meses de dados que voltam ao original toda noite). Tem 156 testes unitários e 20 testes ponta a ponta com Playwright, rodando no CI a cada push, além de monitoramento de erros próprio. No Lighthouse, a página de login tira 100 em acessibilidade, boas práticas e SEO.',
     links: {
       repo: 'https://github.com/mateusnchaves/Finora',
       demo: 'https://finora-wl7u.vercel.app/login',
     },
     image: {
       src: './assets/projects/finora.webp',
-      alt: 'Tela do Finora mostrando o resumo do mês.',
+      alt: 'Visão geral do Finora no tema escuro: saldo total, receitas e despesas do mês e a fatura aberta do cartão.',
+      width: 1426,
+      height: 891,
     },
   },
 {

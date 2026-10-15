@@ -6,7 +6,7 @@ export const currently = {
   updated: '2026-10',
   items: [
     { label: 'Studying', text: 'Análise e Desenvolvimento de Sistemas na Facens, 4º semestre, com foco em projetos full-stack.' },
-    { label: 'Building', text: 'Finora, meu app de finanças pessoais: próximo passo é o login com Google.' },
+    { label: 'Building', text: 'Finora, meu app de finanças pessoais, agora com assistente de IA e versão instalável no celular.' },
     { label: 'Exploring', text: 'Automação de processos, dados e novas tecnologias.' },
   ],
   availability: {
